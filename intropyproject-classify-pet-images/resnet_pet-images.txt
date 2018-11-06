@@ -330,4 +330,4 @@ Pet_label:'beagle'. Classifier_label:'walker hound, walker foxhound'
 Pet_label:'golden retriever'. Classifier_label:'leonberg'
 Pet_label:'great pyrenees'. Classifier_label:'kuvasz'
 
-** Total Elapsed Runtime: 0:0:4
+** Total Elapsed Runtime: 0:0:3

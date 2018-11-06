@@ -67,8 +67,9 @@ def classify_images(images_dir, results_dic, model):
     """
     for image_name, labels in results_dic.items():
         classifier_label = classifier("{}/{}".format(images_dir, image_name), model).lower().strip()
-        labels.append(classifier_label)
-        classifier_label_list = [x.strip() for x in classifier_label.split(',')]
-        labels.append(1 if labels[0] in classifier_label_list else 0)
+        #labels.append(classifier_label)
+        #classifier_label_list = [x.strip() for x in classifier_label.split(',')]
+        #labels.append(1 if labels[0] in classifier_label_list else 0)
+        labels.extend([classifier_label, 1 if labels[0] in classifier_label else 0])
         #print(results_dic[image_name])
 
