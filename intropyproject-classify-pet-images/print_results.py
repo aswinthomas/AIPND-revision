@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
+# PROGRAMMER: Aswin Thomas Abraham
+# DATE CREATED: 6 Nov 2018
 # REVISED DATE: 
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
@@ -62,5 +62,31 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    None
-                
+    print("Model used is: '{}'".format(model))
+    print("Number of images: {}".format(results_stats_dic['n_images']))
+    print("Number of Dog Images: {}".format(results_stats_dic['n_dogs_img']))
+    print("Number of 'Not-a' Dog Images: {}".format(results_stats_dic['n_notdogs_img']))
+    print("Percentage of correct dogs: {}%".format(results_stats_dic['pct_correct_dogs']))
+    print("Percentage of correct 'Not-a' dogs: {}%".format(results_stats_dic['pct_correct_notdogs']))
+    print("Percentage of correct breed: {}%".format(results_stats_dic['pct_correct_breed']))
+    print("Percentage of match: {}%".format(results_stats_dic['pct_match']))
+
+    if print_incorrect_dogs:
+        print("Incorrect Dogs:")
+        count = 0
+        for image_name, labels in results_dic.items():
+            if sum(labels[3:]) == 1:
+                print("Pet_label:'{}'. Classifier_label:'{}'".format(labels[0], labels[1]))
+                count += 1
+        if count == 0:
+            print("None")
+
+    if print_incorrect_breed:
+        print("Incorrect Breeds:")
+        count = 0
+        for image_name, labels in results_dic.items():
+            if sum(labels[3:]) == 2 and labels[2] == 0:
+                print("Pet_label:'{}'. Classifier_label:'{}'".format(labels[0], labels[1]))
+                count += 1
+        if count == 0:
+            print("None")
