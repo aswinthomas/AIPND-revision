@@ -4,7 +4,7 @@
 #                                                                             
 # PROGRAMMER: Aswin Thomas Abraham
 # DATE CREATED: 5 Nov 2018
-# REVISED DATE: 
+# REVISED DATE: 6 Nov 2018
 # PURPOSE: Create the function get_pet_labels that creates the pet labels from 
 #          the image's filename. This function inputs: 
 #           - The Image Folder as image_dir within get_pet_labels function and 
@@ -47,6 +47,9 @@ def get_pet_labels(image_dir):
     file_list = listdir(image_dir)
     results_dic = {}
     for file in file_list:
+        # if file starts with a dot, ignore
+        if file.startswith('.'):
+            continue
         # remove extension from filename, replace underscores with space
         label = splitext(file)[0].replace('_', ' ')
         # remove digits, strip trailing and leading whitespace, and to lower case
